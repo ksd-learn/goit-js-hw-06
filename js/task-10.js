@@ -13,6 +13,7 @@ function destroyBoxes() {
 
 function createBoxes(amount) {
   const divs = [];
+  amount > 100 ? amount = 100 : NaN;
   for (let i = 1; i <= amount; i++) {
     let elem = document.createElement('div');
     elem.append(i);
@@ -22,13 +23,16 @@ function createBoxes(amount) {
                           height: ${30+i*10}px;`;
     divs.push(elem);
   }
-  divBoxes.append(...divs)
+  divBoxes.append(...divs);
+  valueInp.value=''
 }
 
 const divBoxes = document.getElementById('boxes');
 const valueInp = document.querySelector('[type="number"]');
 divBoxes.style.cssText = `margin-top: 20px;
-                          display: flex;`;
+                          display: flex;
+                          flex-wrap: wrap;`;
+
 
 document.querySelector('[data-create]').addEventListener('click', numberDiv);
 document.querySelector('[data-destroy]').addEventListener('click', destroyBoxes);
